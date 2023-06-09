@@ -13,7 +13,7 @@ import {
     loadBlocks,
     loadCSS,
     getMetadata,
-  } from './lib-franklin.js';
+  } from './library-engine/lib-franklin.js';
 
   const LCP_BLOCKS = []; // add your LCP blocks to the list
   const PRODUCTION_DOMAINS = [];
@@ -171,7 +171,7 @@ import {
     if (main) {
       await decorateMain(main);
       document.body.classList.add('appear');
-      await waitForLCP(LCP_BLOCKS);
+      await waitForLCP(LCP_BLOCKS, );
     }
   }
 
@@ -207,7 +207,7 @@ import {
     loadHeader(doc.querySelector('header'));
     loadFooter(doc.querySelector('footer'));
 
-    loadCSS(`${window.hlx.codeBasePath}/styles/lazy-styles.css`);
+    loadCSS(`${window.hlx.libraryBasePath}/styles/lazy-styles.css`);
     addFavIcon('/assets/favicon.png');
     sampleRUM('lazy');
     sampleRUM.observe(main.querySelectorAll('div[data-block-name]'));
